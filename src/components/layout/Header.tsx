@@ -21,12 +21,17 @@ const nav: NavItem[] = [
   { href: "/contato", label: "Contato" },
 ];
 
+const linkClass =
+  "text-sm font-medium text-[#1F2937] transition-colors hover:text-[#F97316] dark:text-neutral-300 dark:hover:text-[#F97316]";
+
 function NavLinks({
   className,
   onNavigate,
+  vertical = false,
 }: {
   className?: string;
   onNavigate?: () => void;
+  vertical?: boolean;
 }) {
   const pathname = usePathname();
 
@@ -41,8 +46,9 @@ function NavLinks({
             key={item.href}
             href={item.href}
             className={cn(
-              "text-sm font-medium text-brand-muted transition-colors hover:text-brand-text dark:hover:text-brand-cru",
-              active && "text-brand-primary dark:text-brand-primary",
+              linkClass,
+              vertical && "py-1",
+              active && "text-[#F97316] dark:text-[#F97316]",
             )}
             onClick={onNavigate}
           >
@@ -60,53 +66,70 @@ export function Header() {
   const remoteLogo = /^https?:\/\//i.test(logoSrc);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-border bg-brand-cru/95 backdrop-blur dark:border-brand-border dark:bg-brand-dark/95">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white dark:border-neutral-800 dark:bg-[#0F172A]">
+      <div className="mx-auto flex h-[80px] min-h-[70px] max-h-[90px] max-w-6xl items-center justify-between gap-10 px-10 sm:px-10 lg:px-12">
         <Link
           href="/"
-          className="flex shrink-0 items-center"
+          className="flex h-10 shrink-0 items-center sm:h-[60px] sm:max-h-[60px]"
           aria-label={siteConfig.name}
         >
-          <span className="relative block h-9 w-[10rem] sm:h-10 sm:w-[11.5rem]">
-            {remoteLogo ? (
-              // eslint-disable-next-line @next/next/no-img-element -- URL externa opcional via env
-              <img
-                src={logoSrc}
-                alt=""
-                className="h-full w-full object-contain object-left"
-                width={220}
-                height={64}
-              />
-            ) : (
-              <Image
-                src={logoSrc}
-                alt=""
-                fill
-                className="object-contain object-left"
-                sizes="(max-width: 640px) 160px, 200px"
-                priority
-              />
-            )}
-          </span>
+          {remoteLogo ? (
+            // eslint-disable-next-line @next/next/no-img-element -- URL externa opcional via env
+            <img
+              src={logoSrc}
+              alt=""
+              className="h-10 w-auto max-h-10 object-contain object-left sm:h-[56px] sm:max-h-[60px]"
+              width={280}
+              height={60}
+              decoding="async"
+            />
+          ) : (
+            <Image
+              src={logoSrc}
+              alt=""
+              width={240}
+              height={60}
+              sizes="(max-width: 640px) 180px, 240px"
+              className="h-10 w-auto max-h-10 object-contain object-left sm:h-[56px] sm:max-h-[60px]"
+              priority
+            />
+          )}
         </Link>
-        <NavLinks className="hidden items-center gap-5 lg:gap-6 md:flex" />
+
+        <NavLinks className="hidden min-w-0 items-center gap-x-7 lg:gap-x-8 md:flex md:flex-nowrap" />
+
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md p-2 text-brand-text md:hidden dark:text-brand-cru"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-[#1F2937] transition-colors hover:text-[#F97316] md:hidden dark:text-neutral-200 dark:hover:text-[#F97316]"
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
         >
           <span className="sr-only">Abrir menu</span>
-          {open ? "✕" : "☰"}
+          {open ? (
+            <span className="text-xl leading-none" aria-hidden>
+              ×
+            </span>
+          ) : (
+            <span className="flex flex-col gap-1.5" aria-hidden>
+              <span className="block h-0.5 w-6 bg-current" />
+              <span className="block h-0.5 w-6 bg-current" />
+              <span className="block h-0.5 w-6 bg-current" />
+            </span>
+          )}
         </button>
       </div>
+
       {open ? (
         <div
           id="mobile-menu"
-          className="border-t border-brand-border bg-brand-cru px-4 py-3 md:hidden dark:bg-brand-dark"
+          className="border-t border-neutral-200 bg-white px-10 py-4 md:hidden dark:border-neutral-800 dark:bg-[#0F172A]"
         >
-          <NavLinks className="flex flex-col gap-3" onNavigate={() => setOpen(false)} />
+          <NavLinks
+            className="flex max-h-[min(70vh,520px)] flex-col gap-4 overflow-y-auto"
+            vertical
+            onNavigate={() => setOpen(false)}
+          />
         </div>
       ) : null}
     </header>

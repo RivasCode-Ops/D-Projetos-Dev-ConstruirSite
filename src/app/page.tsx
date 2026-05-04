@@ -1,9 +1,9 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ComplianceStrip } from "@/components/sections/ComplianceStrip";
 import { ExecutionTimeline } from "@/components/sections/ExecutionTimeline";
+import { HeroEngineering } from "@/components/sections/HeroEngineering";
 import { LiveMetricsPanel } from "@/components/sections/LiveMetricsPanel";
 import { NumberedServices } from "@/components/sections/NumberedServices";
-import { PageHero } from "@/components/sections/PageHero";
 import { PortfolioWithFilters } from "@/components/sections/PortfolioWithFilters";
 import projetos from "@/content/empreendimentos.json";
 import { siteConfig } from "@/lib/site-config";
@@ -14,18 +14,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <PageHero
-        id="hero"
-        title="construir EMPREENDIMENTOS — execução técnica que entrega no prazo."
-        subtitle="Gestão de obras com rastreabilidade, compliance e prestação de contas. Parceria pública ou privada, o método é o mesmo."
-        primaryCta={{ href: "/contato", label: "Solicitar diagnóstico de obra" }}
-        secondaryCta={{
-          href: siteConfig.whatsappUrl,
-          label: "WhatsApp Diretoria",
-          target: "_blank",
-          rel: "noreferrer",
-        }}
-      />
+      <HeroEngineering />
 
       <LiveMetricsPanel />
 
