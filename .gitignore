@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# Vercel (credenciais locais do CLI — não commitar)
+.vercel
+
 # env
 .env
 .env*.local
