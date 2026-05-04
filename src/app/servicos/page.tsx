@@ -1,5 +1,6 @@
 import { PageHero } from "@/components/sections/PageHero";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { siteConfig } from "@/lib/site-config";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,24 +15,37 @@ export default function ServicosPage() {
     <div>
       <PageHero
         title="Serviços"
-        subtitle="Detalhamento dos três módulos que compõem a execução construir EMPREENDIMENTOS."
-        primaryCta={{ href: "/contato", label: "Solicitar proposta" }}
-        secondaryCta={{ href: "/#modulos", label: "Ver na home" }}
+        subtitle="Três módulos. Um método."
+        primaryCta={{ href: "/contato", label: "Solicitar diagnóstico de obra" }}
+        secondaryCta={{
+          href: siteConfig.whatsappUrl,
+          label: "WhatsApp Diretoria",
+          target: "_blank",
+          rel: "noreferrer",
+        }}
       />
-      <section className="mx-auto max-w-6xl space-y-12 px-4 py-12 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-6xl space-y-10 px-4 py-12 sm:px-6 lg:px-8">
+        <p className="max-w-3xl text-brand-muted leading-relaxed">
+          Os mesmos três módulos da home, com descrição estendida técnica (a ser detalhada conforme contrato).
+          Nenhum serviço avulso. Apenas sistema fechado de execução.
+        </p>
+
         <article className={cardExpand}>
           <h2 className="font-display text-xl font-bold text-brand-text dark:text-brand-cru">
             Planejamento e Prazos
           </h2>
           <p className="mt-4 text-brand-muted leading-relaxed">
-            Construímos o cronograma a partir da materialidade real: precedências técnicas, janelas de
-            fornecimento e marcos de liberação. Cada fase tem dono, data e critério de pronto — com buffer
-            explícito para risco (sem folga escondida).
+            Controle físico-financeiro com alerta de desvio antes de acontecer. Curva de obra vinculada a
+            medições, suprimentos e marcos de liberação — com responsável nomeado por etapa e registro de
+            decisão.
+          </p>
+          <p className="mt-3 text-sm font-medium italic text-brand-text dark:text-brand-cru">
+            Benefício direto: entregas documentadas dentro do cronograma.
           </p>
           <ul className="mt-6 list-inside list-disc space-y-2 text-sm text-brand-muted">
-            <li>Plano mestre e de contingência alinhados ao empreendimento</li>
-            <li>Curva S e acompanhamento semanal de desvio</li>
-            <li>Gatilhos de decisão para não paralisar frente de obra</li>
+            <li>Baseline físico-financeiro e tolerância de desvio acordada</li>
+            <li>Alertas antecipados (não só retrato após estourar prazo)</li>
+            <li>Atas de decisão amarradas a mudança de sequência ou escopo</li>
           </ul>
         </article>
 
@@ -40,14 +54,16 @@ export default function ServicosPage() {
             Compliance e Transparência
           </h2>
           <p className="mt-4 text-brand-muted leading-relaxed">
-            Transparência não é relatório bonito: é trilha. Versionamento de projetos, atas com decisão,
-            registro de mudanças de escopo e comunicação padronizada com stakeholders — para reduzir
-            ambiguidade e retrabalho jurídico-operacional.
+            Execução auditável a qualquer momento. Trilha documental compatível com exigência de órgãos de
+            controle e PPP — versão, hash de pacote e quem aprovou o quê, quando.
+          </p>
+          <p className="mt-3 text-sm font-medium italic text-brand-text dark:text-brand-cru">
+            Benefício direto: segurança jurídica e prestação de contas automática.
           </p>
           <ul className="mt-6 list-inside list-disc space-y-2 text-sm text-brand-muted">
-            <li>Trilha documental e conformidade com exigências do empreendimento</li>
-            <li>Rastreabilidade de liberações e aditivos</li>
-            <li>Rituais de alinhamento com cliente e parceiros</li>
+            <li>Checklist de conformidade por fase (público ou privado)</li>
+            <li>Pacotes de evidência para auditoria externa</li>
+            <li>Comunicação padronizada com contratante e fiscalização</li>
           </ul>
         </article>
 
@@ -56,18 +72,24 @@ export default function ServicosPage() {
             Gestão Técnica Digital
           </h2>
           <p className="mt-4 text-brand-muted leading-relaxed">
-            Dados moram em um fluxo único: medições, inspeções, não conformidades e indicadores de avanço
-            físico/financeiro. Menos planilha solta — mais decisão com contexto e histórico auditável.
+            Plantas, medições, relatórios e equipe centralizados. Um fluxo único: inspeção, não conformidade,
+            retrabalho e liberação com histórico — sem depender de encaminhar anexo em e-mail.
+          </p>
+          <p className="mt-3 text-sm font-medium italic text-brand-text dark:text-brand-cru">
+            Benefício direto: decisão técnica rápida sem depender de e-mail.
           </p>
           <ul className="mt-6 list-inside list-disc space-y-2 text-sm text-brand-muted">
-            <li>Indicadores de produtividade e qualidade integrados ao cronograma</li>
-            <li>Padronização de relatórios e painéis de status</li>
-            <li>Integração com processos de suprimentos e campo</li>
+            <li>Repositório técnico único com controle de versão operacional</li>
+            <li>Dashboard compartilhado com indicadores acordados em contrato</li>
+            <li>Integração com rituais de campo (canteiro ↔ escritório)</li>
           </ul>
         </article>
 
-        <div className="flex justify-center pt-4">
-          <ButtonLink href="/contato">Falar com o time</ButtonLink>
+        <div className="flex flex-wrap justify-center gap-4 pt-4">
+          <ButtonLink href="/contato">Apresentação institucional</ButtonLink>
+          <ButtonLink href={siteConfig.whatsappUrl} target="_blank" rel="noreferrer" variant="secondary">
+            WhatsApp Diretoria
+          </ButtonLink>
         </div>
       </section>
     </div>

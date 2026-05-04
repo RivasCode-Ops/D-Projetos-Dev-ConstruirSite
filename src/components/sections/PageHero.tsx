@@ -1,6 +1,6 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 
-type Cta = { href: string; label: string };
+type Cta = { href: string; label: string; target?: "_blank"; rel?: string };
 
 type PageHeroProps = {
   id?: string;
@@ -25,9 +25,13 @@ export function PageHero({ id, title, subtitle, primaryCta, secondaryCta }: Page
         </p>
         {(primaryCta || secondaryCta) && (
           <div className="mt-8 flex flex-wrap gap-3">
-            {primaryCta ? <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink> : null}
+            {primaryCta ? (
+              <ButtonLink href={primaryCta.href} target={primaryCta.target} rel={primaryCta.rel}>
+                {primaryCta.label}
+              </ButtonLink>
+            ) : null}
             {secondaryCta ? (
-              <ButtonLink href={secondaryCta.href} variant="secondary">
+              <ButtonLink href={secondaryCta.href} variant="secondary" target={secondaryCta.target} rel={secondaryCta.rel}>
                 {secondaryCta.label}
               </ButtonLink>
             ) : null}

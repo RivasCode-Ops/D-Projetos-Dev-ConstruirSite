@@ -34,7 +34,10 @@ export function Footer() {
                 <span className="text-brand-primary">{siteConfig.wordmark.line2}</span>
               </p>
             )}
-            <p className="mt-2 max-w-sm text-sm text-brand-muted">{siteConfig.tagline}</p>
+            <p className="mt-3 max-w-md text-sm font-medium text-brand-text dark:text-brand-cru">
+              {siteConfig.footerLead}
+            </p>
+            <p className="mt-2 max-w-md text-sm text-brand-muted">{siteConfig.tagline}</p>
             {siteHost ? (
               <p className="mt-3 text-xs text-brand-muted">
                 Site:{" "}
@@ -64,7 +67,7 @@ export function Footer() {
           <div className="text-sm text-brand-muted">
             <p>{siteConfig.links.address}</p>
             <p className="mt-2">
-              <a href={`tel:${siteConfig.links.phone.replace(/\s/g, "")}`} className="hover:text-brand-primary">
+              <a href={`tel:${siteConfig.links.phoneTel}`} className="hover:text-brand-primary">
                 {siteConfig.links.phone}
               </a>
             </p>
@@ -80,7 +83,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
               >
-                WhatsApp
+                WhatsApp Diretoria
               </a>
             </p>
           </div>
@@ -90,7 +93,7 @@ export function Footer() {
             © {year} {siteConfig.name}. Todos os direitos reservados.
           </p>
           <Link href="/contato" className="hover:text-brand-text dark:hover:text-brand-cru">
-            Privacidade / LGPD — fale conosco
+            Contato / LGPD
           </Link>
         </div>
       </div>

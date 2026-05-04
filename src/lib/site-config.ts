@@ -42,15 +42,20 @@ export const siteConfig = {
   /** Marca em duas linhas visuais: caixa baixa + caixa alta */
   wordmark: { line1: "construir", line2: "EMPREENDIMENTOS" },
   shortName: "construir EMPREENDIMENTOS",
-  tagline: "Execução técnica com sistema — do planejamento à entrega.",
+  tagline: "Execução técnica que entrega no prazo. Sem ruído. Sem discurso.",
+  /** Linha institucional no rodapé (acima da tagline curta) */
+  footerLead: "construir EMPREENDIMENTOS — Sistema de Execução Controlada",
   description:
-    "construir EMPREENDIMENTOS — estrutura de execução controlada para obras e empreendimentos com prazo, compliance e gestão técnica digital.",
+    "Gestão de obras com rastreabilidade, compliance e prestação de contas. Parceria pública ou privada, o método é o mesmo.",
   url: resolveSiteUrl(),
   logoSrc,
   contactEmail,
   whatsappUrl: `https://wa.me/${whatsappDigits}`,
   links: {
-    phone: "+55 11 99999-9999",
+    /** Texto exibido (copy contato / rodapé) */
+    phone: "(11) 99999-9999",
+    /** Valor para `href="tel:..."` */
+    phoneTel: "+5511999999999",
     email: contactEmail,
     address: "São Paulo — SP, Brasil",
   },

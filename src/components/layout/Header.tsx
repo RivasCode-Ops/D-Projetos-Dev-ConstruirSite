@@ -10,9 +10,11 @@ import { useState } from "react";
 
 const nav: NavItem[] = [
   { href: "/", label: "Início" },
+  { href: "/#metricas", label: "Painel" },
   { href: "/#posicionamento", label: "Posicionamento" },
   { href: "/#modulos", label: "Módulos" },
-  { href: "/#processo", label: "Processo" },
+  { href: "/#portfolio", label: "Portfólio" },
+  { href: "/#metodo", label: "Método" },
   { href: "/sobre", label: "Sobre" },
   { href: "/empreendimentos", label: "Empreendimentos" },
   { href: "/servicos", label: "Serviços" },
